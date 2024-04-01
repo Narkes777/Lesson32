@@ -1,0 +1,25 @@
+{% extends 'new_app/post_main.html' %}
+
+{% block title %}Список постов{% endblock %}
+
+{% block content %}
+    <h1>Post List</h1>
+    {% for post in object_list %}
+    <p><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></p> <!-- url('post_detail', pk=post.pk) -->
+    <p>-----</p>
+    {% endfor %}
+
+    <p><a href="{% url 'post_create' %}">Создать пост</a></p>
+{% endblock %}
+
+<!--
+ page.object_list - список всех записей, входящих в состав текущей страницы
+ page.number - номер этой конкретной страницы
+ page.paginator - возвращает класс пагинатора
+ page.has_next - метод, возвращающий True если есть еще страница дальше
+ page.has_previous - метод, возвращающий True, если есть предыдущая страница
+ page.has_other_pages - метод, возвращающий True если в этом пагинаторе в принципе есть другие страницы
+ page.next_page_number - метов, возвращающий номер следующей страницы
+ page_previous_page_number - метод, возвращающий номер предыдущей страницы
+ -->
+

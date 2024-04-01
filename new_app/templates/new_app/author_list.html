@@ -1,0 +1,23 @@
+{% extends "main/navbar.html" %}
+{% load bootstrap4 %}
+
+
+
+{% block content %}
+    <div class="container">
+        {% for author in author_list %}
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h4 class="card-title"><a href="{% url 'author_detail' pk=author.pk %}">{{ author_name }}</a></h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ author.bio }}</p>
+                    <p class="card-text">{{ author.email }}</p>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="d-flex justify-content-center">
+            {% bootstrap_pagination page_obj size='small' %}
+        </div>
+    </div>
+{% endblock %}
